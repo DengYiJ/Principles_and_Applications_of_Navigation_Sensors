@@ -5,50 +5,50 @@
 
 ```text
 exp2/
-├── main.py                               # ✅ 主入口 (保持不变)
+├── main.py                               # ✅ 主函数入口 (保持不变)
 ├── data/                                 # 📁 原始数据
-│   ├── data.txt                          # ← 从根目录移入
-│   └── raw_data.txt                      # ← 从根目录移入
-├── configs/                              # ✅ 已有
+│   ├── data.txt                          # 实验数据
+│   └── raw_data.txt                      
+├── configs/                              # ✅ 参数设置
 │   └── constants.py
-├── algorithms/                           # ✅ 已有
+├── algorithms/                           # ✅ 算法
 │   ├── __init__.py
 │   ├── extractor.py
 │   ├── satellite.py
 │   ├── corrections.py
 │   ├── solver.py
 │   └── transform.py
-├── evaluation/                           # ✅ 已有
+├── evaluation/                           # ✅ 精度评估
 │   └── accuracy.py
-├── visualization/                        # ✅ 已有
+├── visualization/                        # ✅ 可视化skyplot
 │   └── plot_earth.py
-├── tests/                                # ✅ 已有
+├── tests/                                # 
 │   └── test_satellite_position.py
 ├── scripts/                              # 📁 调试脚本
-│   ├── debug_time_chain.py               # ← 从根目录移入
-│   ├── debug_rangea_fields.py            # ← 从根目录移入
-│   ├── debug_lsq_trace.py                # ← 从根目录移入
-│   ├── debug_clock_sign.py               # ← 从根目录移入
-│   ├── debug_clock_sign_final.py          # ← 从根目录移入
-│   ├── debug_exclude_prn9.py             # ← 从根目录移入
-│   ├── debug_three_cases.py              # ← 从根目录移入
-│   ├── debug_residual_analysis.py        # ← 从根目录移入
-│   └── debug_measurement_validation.py   # ← 从根目录移入
+│   ├── debug_time_chain.py               
+│   ├── debug_rangea_fields.py            
+│   ├── debug_lsq_trace.py                 
+│   ├── debug_clock_sign.py               
+│   ├── debug_clock_sign_final.py          
+│   ├── debug_exclude_prn9.py            
+│   ├── debug_three_cases.py              
+│   ├── debug_residual_analysis.py       
+│   └── debug_measurement_validation.py   
 ├── docs/                                 # 📁 文档
 │   ├── analysis/                         #    算法/实验分析
-│   │   ├── 02_experiment_guide_analysis.md # ← 从根目录移入
-│   │   ├── 03_algorithm_design.md        # ← 从根目录移入
-│   │   └── 算法与数据字段映射验证报告.md   # ← 从根目录移入
+│   │   ├── 02_experiment_guide_analysis.md # 实验分析
+│   │   ├── 03_algorithm_design.md        # 算法设计
+│   │   └── 算法与数据字段映射验证报告.md   # 
 │   ├── debug_reports/                    #    调试报告
-│   │   ├── 04_调试复盘与根因分析.md        # ← 从根目录移入
-│   │   ├── 05_时间偏移根因分析报告.md      # ← 从根目录移入
-│   │   ├── 06_LSQ追踪与7000km误差根因分析.md # ← 从根目录移入
-│   │   ├── 07_剔除PRN9后剩余186km误差排查.md # ← 从根目录移入
-│   │   └── 08_钟差符号根因确认与修复报告.md # ← 从根目录移入
-│   └── 数据字段含义解析.docx               # ← 从根目录移入
-├── results/                              # ✅ 已有 (8项输出)
+│   │   ├── 04_调试复盘与根因分析.md        
+│   │   ├── 05_时间偏移根因分析报告.md      
+│   │   ├── 06_LSQ追踪与7000km误差根因分析.md 
+│   │   ├── 07_剔除PRN9后剩余186km误差排查.md 
+│   │   └── 08_钟差符号根因确认与修复报告.md 
+│   └── 数据字段含义解析.docx               
+├── results/                              # ✅ 8项输出
 │   ├── 01_software_screenshot.txt
 │   ├── ...
 │   ├── 08_program_info.txt
 │   └── visualization.png
-└── readme.md                             # ✅ 保留
+└── readme.md                             # ✅ 
