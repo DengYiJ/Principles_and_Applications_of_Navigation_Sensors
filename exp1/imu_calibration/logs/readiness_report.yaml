@@ -1,0 +1,23 @@
+details:
+  依赖包:
+    matplotlib: OK
+    numpy: OK
+    yaml: OK
+  依赖包(可选):
+    tqdm: MISSING (不影响核心功能)
+  数据路径:
+    accel_6files: 'True'
+    accel_dir: 'True'
+    bias_8files: 'True'
+    bias_dir: 'True'
+    rate_dir: 'True'
+    rate_pos1: 'True'
+    rate_pos2: 'True'
+    rate_pos3: 'True'
+    static_file: 'True'
+  输出目录:
+    calibration_results: 'True'
+    experiments: 'True'
+    logs: 'True'
+    result: 'True'
+status: PASS

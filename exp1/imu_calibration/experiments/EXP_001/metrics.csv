@@ -1,0 +1,15 @@
+metric,value
+accel_reprojection_error_m_s2,0.00040859761079020386
+accel_condition_number,5.658609988327523
+accel_time_s,3.74
+gyro_rate_time_s,3.19
+allan_ARW_X_deg_sqrt_h,4.786264876760885
+allan_BI_X_deg_h,0.0006243193232530937
+allan_fitted_slope_X,-0.8133012243827772
+allan_ARW_Y_deg_sqrt_h,3.775142121898484
+allan_BI_Y_deg_h,0.0004996870471799952
+allan_fitted_slope_Y,-0.8079421610845702
+allan_ARW_Z_deg_sqrt_h,0.24270256741342564
+allan_BI_Z_deg_h,3.71813382482206e-05
+allan_fitted_slope_Z,-0.7072886492750416
+allan_time_s,20.38

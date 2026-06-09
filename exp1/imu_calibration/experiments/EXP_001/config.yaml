@@ -1,0 +1,9 @@
+config:
+  allan_use_overlapping: true
+  cond_threshold: 100000000.0
+  integration_method: trapezoidal
+  outlier_sigma: 3.0
+description: 加速度计六位置标定 + 陀螺仪速率标定 + 陀螺仪八位置零偏偏定 + Allan方差分析
+exp_id: EXP_001
+name: Full IMU Calibration
+type: Baseline + Full Calibration
