@@ -1,0 +1,7 @@
+Angle,Coarse(deg),Fine(deg),Reference(deg),CoarseError(deg),FineError(deg)
+Roll,0.038602,-0.003056,0.001000,+0.037602,-0.004056
+Pitch,-0.017587,-0.019108,-0.018000,+0.000413,-0.001108
+Heading,0.797564,0.797564,0.770000,+0.027564,+0.027564
+
+Coarse_L2,0.046625
+Fine_L2,0.027883

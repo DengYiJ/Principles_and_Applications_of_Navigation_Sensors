@@ -1,0 +1,75 @@
+# ============================================================================
+# 实验（3）惯性导航实验 — 全局配置文件
+# ============================================================================
+
+# --- 数据参数 ---
+data:
+  sample_rate: 200                    # 采样频率 (Hz)
+  duration: 200                       # 单姿态采样时长 (s)
+  imu_protocol: "$GTIMU"              # IMU数据协议
+  ref_protocol: "$GPFPD"              # 参考数据协议
+  scale_gyro: 0.01745329252           # °/s → rad/s (deg2rad)
+  scale_acc: 9.7803267714            # g → m/s^2
+
+# --- 地球物理参数 ---
+earth:
+  wie: 7.292115e-5                    # 地球自转角速度 (rad/s)
+  g: 9.7803267714                     # 重力加速度 (m/s²)
+  latitude_deg: 45.734501             # 当地纬度 (°) — 哈工大惯导中心
+  longitude_deg: 126.634575           # 当地经度 (°)
+  altitude: 146.0                     # 当地高度 (m)
+
+# --- 粗对准参数 ---
+coarse_align:
+  t1: 10.0                            # 双矢量第一个取点时刻 (s)
+  t2: 100.0                           # 双矢量第二个取点时刻 (s)
+  min_interval: 10.0                  # 最小取点间隔 (s)，避免向量共线
+  n_avg_pairs: 5                      # 多组取点平均的组数
+
+# --- 精对准参数（KF）---
+fine_align:
+  # 初始协方差 P₀
+  init_cov:
+    phi_deg: 1.0                      # 失准角初始不确定度 (°)
+    phi_yaw_deg: 5.0                  # 航向失准角初始不确定度 (°, 航向更难对准)
+    dv_mps: 0.1                       # 速度误差初始不确定度 (m/s)
+    gyro_bias_dps: 0.01               # 陀螺零偏初始不确定度 (°/s)
+    acc_bias_mps2: 0.0001             # 加速度计零偏初始不确定度 (m/s²)
+
+  # 量测噪声协方差 R
+  R:
+    vel_noise_mps: 0.01               # 速度量测噪声标准差 (m/s)
+
+  # 状态反馈策略
+  feedback:
+    reset_phi: true                   # 是否将失准角反馈后重置为0
+    reset_dv: true                    # 是否将速度误差反馈后重置为0
+
+# --- 姿态更新参数 ---
+attitude_update:
+  integration_method: "picard_2nd"     # 积分方法: picard_2nd / rk4
+  normalize_quat: true                # 每步是否归一化四元数
+
+# --- 传感器误差参数（来自实验1标定，示例值）---
+imu_err:
+  gyro_bias_deg_h: 0.002              # 陀螺常值零偏 (°/h)
+  acc_bias_mg: 20.0                   # 加速度计常值零偏 (mg)
+  gyro_arw_deg_sqrth: 0.001           # 陀螺角随机游走 (°/√h)
+  acc_vrw_m_s_sqrth: 10.0             # 加速度计速度随机游走 (m/s/√h)
+
+# --- 预处理参数 ---
+preprocess:
+  outlier_threshold_sigma: 5.0        # 野值检测阈值 (标准差倍数)
+  interpolation: "linear"             # 插值方法: linear / cubic / spline
+
+# --- 输出参数 ---
+output:
+  save_plots: true                    # 是否保存图表
+  plot_format: "png"                  # 图表格式
+  plot_dpi: 300                       # 图表分辨率
+  save_path: "./results/"             # 输出目录
+
+# --- 日志参数 ---
+logging:
+  level: "INFO"                       # 日志级别: DEBUG / INFO / WARNING / ERROR
+  log_file: "./logs/exp3_run.log"     # 日志文件路径

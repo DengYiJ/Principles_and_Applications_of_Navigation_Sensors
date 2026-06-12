@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python scripts/coarse_align_9500.py)",
+      "Bash(python scripts/debug_dcm.py)",
+      "Bash(python scripts/plot_coarse_alignment.py)",
+      "Bash(python scripts/coarse_align_30_0_0.py)",
+      "Bash(python scripts/plot_coarse_alignment_30.py)",
+      "Bash(python -c ' *)",
+      "Bash(python scripts/fine_align_final.py)",
+      "Bash(python scripts/attitude_update.py)",
+      "Bash(xxd)"
+    ]
+  }
+}

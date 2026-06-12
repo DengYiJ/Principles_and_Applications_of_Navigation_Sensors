@@ -1,0 +1,52 @@
+"""
+粗对准验证: gtimu_0_0_0.log 前9500行
+参考: Heading=0.770, Pitch=-0.018, Roll=0.001
+"""
+import sys, os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+import numpy as np
+from src.data_io import DataLoader
+from src.preprocessing import Preprocessor
+from src.alignment import CoarseAligner
+
+print("=" * 60)
+print("粗对准验证 -- gtimu_0_0_0.log 前9500行")
+print("=" * 60)
+
+# 加载数据，截断前9500行
+imu_raw = DataLoader.load_imu(
+    os.path.join(os.path.dirname(__file__), '..', 'data', '初始对准', 'gtimu_0_0_0.log')
+)
+for key in imu_raw:
+    imu_raw[key] = imu_raw[key][:9500]
+
+N = len(imu_raw['time'])
+print(f"数据: {N} 行")
+
+# 预处理
+imu_data = Preprocessor.process(imu_raw, outlier_threshold=5.0)
+
+# 粗对准
+aligner = CoarseAligner(latitude_deg=45.734501)
+Cnb0, (r, p, y) = aligner.run(imu_data, t1=10.0, t2=40.0, n_avg_pairs=3)
+
+# 参考结果
+ref_r, ref_p, ref_h = 0.001, -0.018, 0.770
+
+print(f"\n{'='*60}")
+print(f"{'':<16} {'横滚(deg)':<15} {'俯仰(deg)':<15} {'航向(deg)':<15}")
+print("-"*61)
+print(f"{'解算':<16} {r:<15.4f} {p:<15.4f} {y:<15.4f}")
+print(f"{'参考':<16} {ref_r:<15.4f} {ref_p:<15.4f} {ref_h:<15.4f}")
+print(f"{'误差':<16} {r-ref_r:<15.4f} {p-ref_p:<15.4f} {y-ref_h:<15.4f}")
+print(f"{'|误差|':<16} {abs(r-ref_r):<15.4f} {abs(p-ref_p):<15.4f} {abs(y-ref_h):<15.4f}")
+print(f"\n3D总误差: {np.linalg.norm([r-ref_r, p-ref_p, y-ref_h]):.4f}°")
+print("="*60)
+
+# 保存结果
+res = os.path.join(os.path.dirname(__file__), '..', 'results', 'verify.txt')
+os.makedirs(os.path.dirname(res), exist_ok=True)
+with open(res, 'w') as f:
+    f.write(f"roll={r:.4f} pitch={p:.4f} yaw={y:.4f} | ref Roll={ref_r} Pitch={ref_p} Heading={ref_h}\n")
+    f.write(f"err_roll={r-ref_r:.4f} err_pitch={p-ref_p:.4f} err_yaw={y-ref_h:.4f} | 3D={np.linalg.norm([r-ref_r,p-ref_p,y-ref_h]):.4f}\n")
+print(f"已保存: {res}")

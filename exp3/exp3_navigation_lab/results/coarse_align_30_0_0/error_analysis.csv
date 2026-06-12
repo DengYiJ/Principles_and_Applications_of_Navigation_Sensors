@@ -1,0 +1,8 @@
+Angle,Computed(deg),Reference(deg),Error(deg),AbsError(deg)
+Roll,0.062791,0.003000,+0.059791,0.059791
+Pitch,0.016837,-0.017000,+0.033837,0.033837
+Heading,330.716875,330.642000,+0.074875,0.074875
+
+L2_Error,0.101618
+L1_Error,0.168504
+Max_Error,0.074875

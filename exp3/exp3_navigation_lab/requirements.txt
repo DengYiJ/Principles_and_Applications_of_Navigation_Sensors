@@ -1,0 +1,5 @@
+# 实验(3) 惯性导航实验 — Python依赖
+numpy>=1.20.0
+scipy>=1.7.0
+matplotlib>=3.5.0
+PyYAML>=5.4.0
