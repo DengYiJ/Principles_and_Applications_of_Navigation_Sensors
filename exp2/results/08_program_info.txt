@@ -1,0 +1,19 @@
+结果 (8): 完整的单点定位程序
+==============================
+
+程序组成:
+  main.py                 - 主入口 (Pipeline控制器)
+  configs/constants.py    - 物理常数与算法超参数
+  algorithms/extractor.py  - A1:观测时刻 A2:星历矩阵 A3:伪距矩阵
+  algorithms/satellite.py  - B:卫星位置解算 (ICD 9步)
+  algorithms/corrections.py - C1:钟差修正 C2:地球自转修正
+  algorithms/solver.py     - D:最小二乘迭代求解
+  algorithms/transform.py  - E1:ECEF→大地坐标
+  evaluation/accuracy.py   - E2:精度验证
+  visualization/plot_earth.py - 可视化
+
+输入数据: exp2/data.txt
+输出目录: exp2/results/
+
+运行方式:
+  python exp2/main.py
